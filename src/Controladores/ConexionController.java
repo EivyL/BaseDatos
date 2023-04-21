@@ -5,7 +5,9 @@
 package Controladores;
 
 import Modelos.Conexion;
+import Modelos.PersonaModel;
 import Vistas.frmLogin;
+import Vistas.frmPersonas;
 import Vistas.frmPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,14 +20,18 @@ public class ConexionController implements ActionListener {
     frmLogin VistaLogin;
     frmPrincipal VistaPrincipal;
     Conexion ModeloConexion;
+    frmPersonas VistaPersona;
+    PersonaModel ModeloPersona;
     
     //Levantar la vista principal 
 
-    public ConexionController(frmLogin VistaLogin, frmPrincipal VistaPrincipal, Conexion ModeloConexion) {
+    public ConexionController(frmLogin VistaLogin, frmPrincipal VistaPrincipal,
+            Conexion ModeloConexion, frmPersonas VistaPersona, PersonaModel ModeloPer) {
         this.VistaLogin = VistaLogin;
         this.VistaPrincipal = VistaPrincipal;
         this.ModeloConexion = ModeloConexion;
-        
+        this.VistaPersona = VistaPersona;
+        this.ModeloPersona = ModeloPer;
         this.VistaPrincipal.setExtendedState(frmPrincipal.MAXIMIZED_BOTH);
         this.VistaPrincipal.setVisible(true);
         
@@ -40,8 +46,24 @@ public class ConexionController implements ActionListener {
     @Override
     public void actionPerformed (ActionEvent e){
         if (e.getSource () == this.VistaLogin.btnAceptar){
-            this.ModeloConexion.Conectar(this.VistaLogin.btnAceptar.getText(),
-                    this.VistaLogin.txtUser.getText());
+            this.ModeloConexion.Conectar(this.VistaLogin.txtUser.getText(),
+                    this.VistaLogin.txtContra.getText());
+            
+            if(ModeloConexion!=null)
+            {
+                this.VistaLogin.dispose();
+                this.VistaPersona.jButton1.addActionListener(this);
+                this.VistaPersona.setLocationRelativeTo(null);
+                this.VistaPersona.setVisible(true);
+                
+            }
+            if(e.getSource()==this.VistaPersona.jButton1)
+            {
+                //mandar a guardar el registro 
+                this.ModeloPersona.GuardarPersona(this.VistaPersona.txtApe.getText(),
+                        this.VistaPersona.txtNom.getText(),
+                        this.VistaPersona.txtTele.getText());
+            }
         }
 
     }  

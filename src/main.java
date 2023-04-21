@@ -1,7 +1,9 @@
 
 import Controladores.ConexionController;
 import Modelos.Conexion;
+import Modelos.PersonaModel;
 import Vistas.frmLogin;
+import Vistas.frmPersonas;
 import Vistas.frmPrincipal;
 
 /*
@@ -23,9 +25,12 @@ public class main {
         // TODO code application logic here
         frmPrincipal VistaPrincipal = new frmPrincipal();
         frmLogin VistaLogin = new frmLogin(VistaPrincipal, true);
+        frmPersonas VistaPersonas = new frmPersonas(VistaPrincipal, true);
         Conexion nuevaConexion = new Conexion();
+        PersonaModel ModeloPersona = new PersonaModel();
+        
         ConexionController ControladorConexion = new ConexionController(VistaLogin, VistaPrincipal,
-        nuevaConexion);
+        nuevaConexion, VistaPersonas, ModeloPersona);
     }
     
 }

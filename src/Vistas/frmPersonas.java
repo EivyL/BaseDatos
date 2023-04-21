@@ -153,12 +153,12 @@ public class frmPersonas extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    public javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtApe;
-    private javax.swing.JTextField txtNom;
-    private javax.swing.JTextField txtTele;
+    public javax.swing.JTextField txtApe;
+    public javax.swing.JTextField txtNom;
+    public javax.swing.JTextField txtTele;
     // End of variables declaration//GEN-END:variables
 }
